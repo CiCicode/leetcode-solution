@@ -1,5 +1,12 @@
 # leetcode-solution-SQL50
-My LeetCode solutions with detailed explanations
+LeetCode SQL Learning Progress
+個人 LeetCode SQL 學習進度追蹤，目前已進入中級階段，掌握 JOIN、聚合計算、自連接等核心技能。
+```
+階段	狀態	掌握技能	已完成題數
+初級階段	✅ 已完成	基礎查詢、WHERE條件、NULL處理	5題
+中級階段	🔄 進行中	JOIN操作、聚合計算、自連接	7題
+高級階段	⏳ 待開始	視窗函數、遞迴查詢、效能優化	0題
+```
 
 ## 類別 1：基礎 WHERE 條件過濾
 
