@@ -43,6 +43,7 @@ WHERE area >= 3000000 OR population >= 25000000;
 1. 數值比較
 2. OR 連接多個條件
 
+
 ## 類別 2：進階條件與函數應用
 
 ### 1148. Article Views I 找出看過自己文章的作者ID。
@@ -73,6 +74,7 @@ ORDER BY tweet_id;
 學習重點:
 1. 字串函數 CHAR_LENGTH()
 2. 函數在 WHERE 中的應用
+
 
 ## 類別 3：JOIN 操作基礎
 
@@ -105,6 +107,7 @@ ON sale.product_id = prod.product_id;
 2. 外鍵保證的數據完整性
 3. 多欄位選擇
 
+
 ## 類別 4：LEFT JOIN + 條件過濾
 
 ### 1581. Customer Who Visited but Did Not Make Any Transactions 找出有拜訪但沒有交易的客戶及拜訪次數。
@@ -122,6 +125,7 @@ GROUP BY v.customer_id;
 學習重點:
 1. LEFT JOIN 後過濾 NULL
 2. GROUP BY 與 COUNT() 結合
+
 
 ## 類別 5：自連接（SELF JOIN）
 
@@ -161,6 +165,7 @@ ORDER BY start_act.machine_id;
 2. 時間差計算
 3. ROUND() 函數應用
 
+
 ## 類別 6：聚合計算與 HAVING
 
 ### 570. Managers with at Least 5 Direct Reports 找出至少有5個直接下屬的經理姓名。
@@ -184,6 +189,7 @@ JOIN (
 2. HAVING 分組後過濾
 3. WHERE 與 HAVING 的區別
 4. 子查詢應用
+
 
 ## 類別 7：條件聚合與安全計算
 
