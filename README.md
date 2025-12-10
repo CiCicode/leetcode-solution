@@ -1,7 +1,30 @@
 # leetcode-solution
 My LeetCode solutions with detailed explanations
+
+類別 1：基礎 WHERE 條件過濾
+
+### 1757. Recyclable and Low Fat Products
+**連結**: [https://leetcode.com/problems/recyclable-and-low-fat-products/description/]
+#### SQL 解法
+
+```sql
+SELECT product_id
+FROM Products
+WHERE low_fats = 'Y' AND recyclable = 'Y';
+```
+學習重點:
+基本 WHERE 條件
+AND 運算符使用
+
+### 584. Find Customer Referee
+**連結**: [https://leetcode.com/problems/find-customer-referee/description/]
+
+
 ### 1934. Confirmation Rate 計算每個用戶的電子郵件確認率
 **連結**: [LeetCode 1934](https://leetcode.com/problems/confirmation-rate/)
+#### SQL 解法
+
+```sql
 
 #### 解題思路
 1. 使用 LEFT JOIN保留所有註冊用戶
