@@ -1,4 +1,4 @@
-# leetcode-solution
+# leetcode-solution-SQL50
 My LeetCode solutions with detailed explanations
 
 ## 類別 1：基礎 WHERE 條件過濾
