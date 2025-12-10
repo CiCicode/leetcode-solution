@@ -4,10 +4,10 @@ My LeetCode solutions with detailed explanations
 **連結**: [LeetCode 1934](https://leetcode.com/problems/confirmation-rate/)
 
 #### 解題思路
-1. **使用 LEFT JOIN** 保留所有註冊用戶
-2. **條件聚合**計算 confirmed 次數
-3. **處理除以0**的情況（IFNULL）
-4. **四捨五入**到小數點後2位
+1. ***使用 LEFT JOIN*** 保留所有註冊用戶
+2. ***條件聚合***計算 confirmed 次數
+3. ***處理除以0***的情況（IFNULL）
+4. ***四捨五入***到小數點後2位
 
 #### 學習重點
 - 條件聚合：`SUM(CASE WHEN ... THEN 1 ELSE 0 END)`
