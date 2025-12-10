@@ -1,6 +1,6 @@
 # LeetCode SQL Learning Progress
 Tracking 50 problems from basic to advanced
-個人 LeetCode SQL 學習進度追蹤，目前已進入中級階段，掌握 JOIN、聚合計算、自連接等核心技能。
+
 ```
 階段	     狀態	           掌握技能	                  
 初級階段	   已完成	  基礎查詢、WHERE條件、NULL處理	
