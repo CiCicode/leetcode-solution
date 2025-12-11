@@ -264,8 +264,7 @@ ORDER BY percentage DESC, r.contest_id;
 3. 四捨五入：ROUND(..., 2) 保留2位小數
 4. 排序：先按百分比降序，再按 contest_id 升序
 
-### 1211. Queries Quality and Percentage
-計算每個查詢的：1. 品質 (quality) = 每次查詢評分的平均值 2. 劣質查詢百分比 (poor_query_percentage) = 評分 < 3 的查詢所佔百分比
+### 1211. Queries Quality and Percentage 計算每個查詢的：1. 品質 (quality) = 每次查詢評分的平均值 2. 劣質查詢百分比 (poor_query_percentage) = 評分 < 3 的查詢所佔百分比
 **連結**: [LeetCode 1633](https://leetcode.com/problems/queries-quality-and-percentage/)
 #### SQL 解法
 
