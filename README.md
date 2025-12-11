@@ -49,7 +49,7 @@ WHERE area >= 3000000 OR population >= 25000000;
 2. OR 連接多個條件
 
 ### 1148. Article Views I 找出看過自己文章的作者ID。
-**連結**:[LeetCode 1148](https://leetcode.com/problems/article-views-i/description/)
+**連結**: [LeetCode 1148](https://leetcode.com/problems/article-views-i/description/)
 #### SQL 解法
 
 ```sql
@@ -64,7 +64,7 @@ ORDER BY author_id;
 3. ORDER BY 排序
 
 ### 1683. Invalid Tweets 找出內容長度超過15個字元的推文ID。
-**連結**:[LeetCode 1683](https://leetcode.com/problems/invalid-tweets/description/)
+**連結**: [LeetCode 1683](https://leetcode.com/problems/invalid-tweets/description/)
 #### SQL 解法
 
 ```sql
@@ -78,7 +78,7 @@ ORDER BY tweet_id;
 2. 函數在 WHERE 中的應用
 
 ### 1378. Replace Employee ID With The Unique Identifier 顯示每個員工的 unique_id，沒有則顯示 NULL。
-**連結**:[LeetCode 1378](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/)
+**連結**: [LeetCode 1378](https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/)
 #### SQL 解法
 
 ```sql
@@ -92,7 +92,7 @@ ON emp.id = uni.id;
 2. 處理沒有對應記錄的情況
 
 ### 1068. Product Sales Analysis I 查詢每個銷售記錄的產品名稱、年份和價格。
-**連結**:[LeetCode 1068](https://leetcode.com/problems/product-sales-analysis-i/description/)
+**連結**: [LeetCode 1068](https://leetcode.com/problems/product-sales-analysis-i/description/)
 #### SQL 解法
 
 ```sql
@@ -107,7 +107,7 @@ ON sale.product_id = prod.product_id;
 3. 多欄位選擇
 
 ### 1581. Customer Who Visited but Did Not Make Any Transactions 找出有拜訪但沒有交易的客戶及拜訪次數。
-**連結**:[LeetCode 1581](https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/description/)
+**連結**: [LeetCode 1581](https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/description/)
 #### SQL 解法
 
 ```sql
@@ -139,7 +139,7 @@ WHERE today.temperature > yesterday.temperature;
 3. 相鄰日期比較
 
 ### 1661. Average Time of Process per Machine 計算每台機器處理每個流程的平均時間。
-**連結**:[LeetCode 1661](https://leetcode.com/problems/average-time-of-process-per-machine/description/)
+**連結**: [LeetCode 1661](https://leetcode.com/problems/average-time-of-process-per-machine/description/)
 #### SQL 解法
 
 ```sql
@@ -198,7 +198,7 @@ GROUP BY s.user_id;
 4. ROUND() 函數應用
 
 ### 620. Not Boring Movies 查找所有有趣的非無聊電影
-**連結**:[LeetCode 620](https://leetcode.com/problems/not-boring-movies/)
+**連結**: [LeetCode 620](https://leetcode.com/problems/not-boring-movies/)
 #### SQL 解法
 
 ```sql
@@ -214,7 +214,7 @@ ORDER BY rating DESC;
 4. 排序：`DESC` 降序排列
 
 ### 1251. Average Selling Price 計算每個產品的平均售價
-**連結**:[LeetCode 1251](https://leetcode.com/problems/average-selling-price/)
+**連結**: [LeetCode 1251](https://leetcode.com/problems/average-selling-price/)
 #### SQL 解法
 
 ```sql
@@ -232,7 +232,7 @@ GROUP BY p.product_id;
 4. IFNULL 安全計算：處理除以0的情況
 
 ### 1075. Project Employees I 查詢每個專案中員工的平均工作年資
-**連結**:[LeetCode 1075](https://leetcode.com/problems/project-employees-i/)
+**連結**: [LeetCode 1075](https://leetcode.com/problems/project-employees-i/)
 #### SQL 解法
 
 ```sql
@@ -249,7 +249,7 @@ GROUP BY p.project_id;
 4. 分組：GROUP BY p.project_id 按專案分組
 
 ### 1633. Percentage of Users Attended a Contest 計算每個比賽的用戶參與百分比
-**連結**:[LeetCode 1633](https://leetcode.com/problems/percentage-of-users-attended-a-contest/)
+**連結**: [LeetCode 1633](https://leetcode.com/problems/percentage-of-users-attended-a-contest/)
 #### SQL 解法
 
 ```sql
