@@ -264,4 +264,22 @@ ORDER BY percentage DESC, r.contest_id;
 3. 四捨五入：ROUND(..., 2) 保留2位小數
 4. 排序：先按百分比降序，再按 contest_id 升序
 
+### 1211. Queries Quality and Percentage
+計算每個查詢的：1. 品質 (quality) = 每次查詢評分的平均值 2. 劣質查詢百分比 (poor_query_percentage) = 評分 < 3 的查詢所佔百分比
+**連結**: [LeetCode 1633](https://leetcode.com/problems/queries-quality-and-percentage/)
+#### SQL 解法
+
+```sql
+SELECT query_name, 
+       ROUND(AVG(rating*1.0 / position),2) AS quality,
+       ROUND(SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END)*100 / COUNT(*),2) AS poor_query_percentage
+FROM Queries
+GROUP BY query_name;
+```
+學習重點
+1. CASE WHEN 在聚合函數中的應用
+2. 轉換為浮點數的技巧（* 1.0)
+3. 在單一查詢中計算不同類型的指標
+4. 四捨五入：ROUND(..., 2) 保留2位小數
+5. GROUP BY 時，所有的聚合函數（SUM、COUNT、AVG）都只作用在「當前分組」的資料上。
 
