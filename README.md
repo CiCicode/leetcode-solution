@@ -282,3 +282,21 @@ GROUP BY query_name;
 4. 四捨五入：ROUND(..., 2) 保留2位小數
 5. GROUP BY 時，所有的聚合函數（SUM、COUNT、AVG）都只作用在「當前分組」的資料上。
 
+### 1193: Monthly Transactions I 編寫一個 SQL 查詢來尋找每個月份和每個國家/地區的交易次數及其總金額、已批准的交易次數及其總金額。
+**連結**: [LeetCode 1211](https://leetcode.com/problems/monthly-transactions-i/)
+#### SQL 解法
+
+```sql
+SELECT DATE_FORMAT(trans_date, '%Y-%m') AS month,
+       country,
+       COUNT(*) AS trans_count,
+       SUM(CASE WHEN state = 'approved' THEN 1 ELSE 0 END) AS approved_count,
+       SUM(amount) AS trans_total_amount,
+       SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
+FROM Transactions
+GROUP BY month, country;
+```
+學習重點
+1. DATE_FORMAT(trans_date, '%Y-%m')：將日期轉換為 YYYY-MM 格式，例如 2018-12-18 → 2018-12
+2. 在聚合函數中使用 CASE 表達式實現條件計數或求和
+
