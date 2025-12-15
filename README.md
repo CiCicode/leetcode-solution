@@ -300,3 +300,79 @@ GROUP BY month, country;
 1. DATE_FORMAT(trans_date, '%Y-%m')：將日期轉換為 YYYY-MM 格式，例如 2018-12-18 → 2018-12
 2. 在聚合函數中使用 CASE 表達式實現條件計數或求和
 
+### 1174: Immediate Food Delivery II 寫一個SQL查詢，以計算「第一個訂單」中「即時訂單」所佔的百分比，結果得到兩個小數。
+**連結**: [LeetCode 1174](https://leetcode.com/problems/immediate-food-delivery-ii/)
+#### SQL 解法
+
+```sql
+SELECT ROUND(AVG(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE 0 END)*100, 2) AS immediate_percentage
+FROM Delivery
+WHERE (customer_id, order_date) IN 
+(SELECT customer_id, MIN(order_date) FROM Delivery
+GROUP BY customer_id);
+```
+學習重點
+1. 子查詢：WHERE (col1, col2) IN (subquery)
+2. 找最早日期：MIN(order_date)
+3. 在聚合函數中使用 CASE 表達式實現條件計數或求和
+
+### 550: Game Play Analysis IV
+**連結**: [LeetCode 550](https://leetcode.com/problems/game-play-analysis-iv/)
+#### SQL 解法
+
+```sql
+SELECT 
+     ROUND(COUNT(DISTINCT a.player_id) * 1.0 / 
+        (SELECT COUNT(DISTINCT player_id) FROM Activity),
+        2) AS fraction
+FROM Activity a
+WHERE (a.player_id, a.event_date) IN (
+    SELECT 
+        player_id,
+        DATE_ADD(MIN(event_date), INTERVAL 1 DAY) AS next_day_should_login
+        FROM Activity
+    GROUP BY player_id
+);
+```
+```
+子查詢結果:
+SELECT 
+    player_id,
+    DATE_ADD(MIN(event_date), INTERVAL 1 DAY) AS next_day_should_login
+FROM Activity
+GROUP BY player_id;
+子查詢結果集（稱為集合B）：
++-----------+----------------------+
+| player_id | next_day_should_login |
++-----------+----------------------+
+| 1         | 2016-03-02          | ← 玩家1首次登錄(03-01)的次日
+| 2         | 2017-06-26          | ← 玩家2首次登錄(06-25)的次日
+| 3         | 2016-03-03          | ← 玩家3首次登錄(03-02)的次日
++-----------+----------------------+
+
+FROM Activity a1 -> 主查詢原始數據集（稱為集合A）：
++-----------+------------+
+| player_id | event_date |
++-----------+------------+
+| 1         | 2016-03-01 |
+| 1         | 2016-03-02 | ← 這個會匹配到！
+| 1         | 2016-05-02 |
+| 2         | 2017-06-25 |
+| 3         | 2016-03-02 |
+| 3         | 2018-07-03 |
++-----------+------------+
+
+WHERE IN 條件：求交集 -> 集合A ∩ 集合B =
++-----------+------------+
+| player_id | event_date |
++-----------+------------+
+| 1         | 2016-03-02 | ← 只有這一條記錄！
++-----------+------------+
+
+從交集結果中統計：
+COUNT(DISTINCT a1.player_id)=1
+總玩家數:
+Activity表中的玩家：
+1, 2, 3
+COUNT(DISTINCT player_id) = 3
+```
