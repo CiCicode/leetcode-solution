@@ -376,3 +376,66 @@ Activity表中的玩家：
 1, 2, 3
 COUNT(DISTINCT player_id) = 3
 ```
+
+### 2356. Number of Unique Subjects Taught by Each Teacher
+**連結**: [LeetCode 2356](https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/)
+#### SQL 解法
+
+```sql
+SELECT teacher_id, COUNT(DISTINCT subject_id) AS cnt
+FROM Teacher
+GROUP BY teacher_id;
+```
+
+### 1141: User Activity for the Past 30 Days I
+**連結**: [LeetCode 1141](https://leetcode.com/problems/user-activity-for-the-past-30-days-i/)
+#### SQL 解法
+
+```sql
+SELECT activity_date AS day, COUNT(DISTINCT user_id) AS active_users
+FROM Activity
+WHERE activity_date BETWEEN DATE_SUB('2019-07-27', INTERVAL 29 DAY) 
+                        AND '2019-07-27'
+GROUP BY activity_date;
+```
+```
+原始數據過濾後：
+user_id | activity_date
+--------|---------------
+1       | 2019-07-20    ← v
+1       | 2019-07-20    ← v
+1       | 2019-07-20    ← v
+2       | 2019-07-20    ← v
+2       | 2019-07-21    ← v
+2       | 2019-07-21    ← v
+3       | 2019-07-21    ← v
+3       | 2019-07-21    ← v
+3       | 2019-07-21    ← v
+4       | 2019-06-25    ← ❌ 不在範圍内（早於201-06-28）
+4       | 2019-06-25    ← ❌ 不在範圍内
+```
+
+學習重點:
+日期範圍篩選：使用BETWEEN, DATE_SUB
+給訂截止日期：2019-07-27, 需要過去30天（包含今天）：2019-06-28 到 2019-07-27, 因為要包含今天(2019-07-27)，所以往前推29天(2019-06-28)。
+
+### 1070: Product Sales Analysis III
+**連結**: [LeetCode 1070](https://leetcode.com/problems/product-sales-analysis-iii/)
+#### SQL 解法   
+
+```sql
+-- 主查詢的 SELECT（外層）：
+SELECT product_id, 
+       year AS first_year, -- 來自 Sales 表的 year
+       quantity, 
+       price
+FROM Sales
+WHERE (product_id, year) IN(
+    SELECT -- 子查詢的 SELECT（內層）：
+    product_id,
+    MIN(year) AS first_year -- 計算出的列，別名為 first_year
+    FROM Sales
+    GROUP BY(product_id)
+);
+```
+
