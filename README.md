@@ -316,7 +316,7 @@ GROUP BY customer_id);
 2. 找最早日期：MIN(order_date)
 3. 在聚合函數中使用 CASE 表達式實現條件計數或求和
 
-### 550: Game Play Analysis IV
+### 550: Game Play Analysis IV 寫一個SQL查詢，報告在首次登入的第二天再次登入的玩家的比率，四捨五入到小數點後兩位。
 **連結**: [LeetCode 550](https://leetcode.com/problems/game-play-analysis-iv/)
 #### SQL 解法
 
@@ -377,7 +377,7 @@ Activity表中的玩家：
 COUNT(DISTINCT player_id) = 3
 ```
 
-### 2356. Number of Unique Subjects Taught by Each Teacher
+### 2356. Number of Unique Subjects Taught by Each Teacher 寫一個 SQL 查詢來查詢每位老師所教的唯一科目的數量。
 **連結**: [LeetCode 2356](https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/)
 #### SQL 解法
 
@@ -387,7 +387,7 @@ FROM Teacher
 GROUP BY teacher_id;
 ```
 
-### 1141: User Activity for the Past 30 Days I
+### 1141: User Activity for the Past 30 Days I 撰寫一個SQL查詢，找出截至2019-07-27（包含）的30天內每位使用者的每日活躍使用者數。
 **連結**: [LeetCode 1141](https://leetcode.com/problems/user-activity-for-the-past-30-days-i/)
 #### SQL 解法
 
@@ -419,7 +419,7 @@ user_id | activity_date
 日期範圍篩選：使用BETWEEN, DATE_SUB
 給訂截止日期：2019-07-27, 需要過去30天（包含今天）：2019-06-28 到 2019-07-27, 因為要包含今天(2019-07-27)，所以往前推29天(2019-06-28)。
 
-### 1070: Product Sales Analysis III
+### 1070: Product Sales Analysis III 寫一個SQL查詢，選擇每個產品的**第一年**的 product_id、first_year、quantity 和 price。
 **連結**: [LeetCode 1070](https://leetcode.com/problems/product-sales-analysis-iii/)
 #### SQL 解法   
 
