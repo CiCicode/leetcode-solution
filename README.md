@@ -501,5 +501,6 @@ HAVING COUNT(DISTINCT c.product_key) = (
 );
 ```
 學習重點:
-子查詢在 HAVING 階段執行
+1. 子查詢在 HAVING 階段執行
+2. 這裡不需要使用JOIN, 用子查詢比較簡潔。
 
