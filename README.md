@@ -519,6 +519,7 @@ GROUP BY m.employee_id, m.name
 ORDER BY m.employee_id;
 ```
 ```
+自連接：將表連接到自己
 把同一個表想像成兩份copy：
 copy A（當作經理名單）：m      copy B（當作下屬名單）：e
 ID | 名字    | 匯報給         ID | 名字    | 匯報給
@@ -527,14 +528,13 @@ ID | 名字    | 匯報給         ID | 名字    | 匯報給
 6  | Alice  | 9              6  | Alice  | 9
 4  | Bob    | 9              4  | Bob    | 9
 2  | Winston| null           2  | Winston| null
-執行 JOIN：
+
+執行 JOIN：, 條件：m.employee_id（經理ID） = e.reports_to（下屬的匯報對象）
 從copy A取 Hercy (ID=9)
 到copy B找：誰的「匯報給」=9？
 - Alice: 匯報給=9 ✓ → 連接：Hercy(經理) + Alice(下屬)
 - Bob: 匯報給=9 ✓ → 連接：Hercy(經理) + Bob(下屬)
 
-自連接：將表連接到自己
-條件：m.employee_id（經理ID） = e.reports_to（下屬的匯報對象）
 連接結果：
 m.employee_id | m.name | m.reports_to | m.age | e.employee_id | e.name | e.reports_to | e.age
 --------------|--------|--------------|-------|---------------|--------|--------------|------
