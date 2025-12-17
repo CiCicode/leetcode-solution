@@ -439,4 +439,49 @@ WHERE (product_id, year) IN(
 );
 ```
 
+### 596: Classes More Than 5 Students 寫一個SQL查詢，列出所有學生數量至少為5的班級。
+**連結**: [LeetCode 596](https://leetcode.com/problems/classes-with-at-least-5-students/)
+#### SQL 解法   
 
+```sql
+SELECT class
+FROM Courses
+GROUP BY class
+HAVING COUNT(DISTINCT student)>=5;
+```
+學習重點:
+1. WHERE 子句中「不能直接」使用聚合函數，但可以「間接」通過子查詢使用。
+2. HAVING 是用於在 GROUP BY 分組後，對整個組（而不是單行）進行過濾的條件子句。
+
+### 1729: Find Followers Count 編寫一個SQL查詢，對於每個用戶，傳回該用戶的追蹤者數量。
+**連結**: [LeetCode 1729](https://leetcode.com/problems/find-followers-count/)
+#### SQL 解法   
+
+```sql
+SELECT user_id, COUNT(DISTINCT follower_id) AS followers_count
+FROM Followers
+GROUP BY user_id
+ORDER BY user_id;
+```
+### 619: Biggest Single Number 寫一個SQL查詢，找出只出現一次的數字中最大的一個。如果沒有隻出現一次的數字，則輸出 null。
+**連結**: [LeetCode 619](https://leetcode.com/problems/biggest-single-number/)
+#### SQL 解法
+
+```sql
+SELECT MAX(num) AS num
+FROM (SELECT num 
+      FROM MyNumbers
+      GROUP BY num
+      HAVING COUNT(*)=1) AS t; --把上面的結果看作一個叫做 t 的"臨時表"
+```
+FROM (SELECT...) AS的結果:
+```
+num
+---
+1    ← 只出現一次
+4    ← 只出現一次
+5    ← 只出現一次
+6    ← 只出現一次
+```
+學習重點:
+FROM 可以接查詢結果，不一定是原始表
