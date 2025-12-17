@@ -472,9 +472,10 @@ SELECT MAX(num) AS num
 FROM (SELECT num 
       FROM MyNumbers
       GROUP BY num
-      HAVING COUNT(*)=1) AS t; --把上面的結果看作一個叫做 t 的"臨時表"
+      HAVING COUNT(*)=1) AS t --把結果看作一個叫做 t 的"臨時表"
+; 
 ```
-FROM (SELECT...) AS的結果:
+FROM (SELECT...) AS的結果: 
 ```
 num
 ---
