@@ -486,3 +486,20 @@ num
 ```
 學習重點:
 FROM 可以接查詢結果，不一定是原始表
+
+### 1045: Customers Who Bought All Products 寫一個SQL查詢，找出購買了所有產品的客戶。
+**連結**: [LeetCode 1045](https://leetcode.com/problems/customers-who-bought-all-products/)
+#### SQL 解法
+
+```sql
+SELECT c.customer_id
+FROM Customer c
+GROUP BY c.customer_id
+HAVING COUNT(DISTINCT c.product_key) = (
+    SELECT COUNT(DISTINCT product_key) 
+    FROM Product
+);
+```
+學習重點:
+子查詢在 HAVING 階段執行
+
