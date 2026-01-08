@@ -541,3 +541,16 @@ m.employee_id | m.name | m.reports_to | m.age | e.employee_id | e.name | e.repor
 9             | Hercy  | null         | 43    | 6             | Alice  | 9            | 41
 9             | Hercy  | null         | 43    | 4             | Bob    | 9            | 36
 ```
+
+### LeetCode 1789 編寫一個查詢，找出每個員工的主要部門
+**連結**: [LeetCode 1789](https://leetcode.com/problems/primary-department-for-each-employee/)
+#### SQL 解法
+
+```sql
+SELECT employee_id,
+       department_id
+FROM Employee
+WHERE primary_flag ="Y"
+   OR employee_id IN (SELECT employee_id FROM Employee GROUP BY employee_id HAVING count(*) = 1);
+```
+
