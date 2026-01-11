@@ -554,3 +554,65 @@ WHERE primary_flag ="Y"
    OR employee_id IN (SELECT employee_id FROM Employee GROUP BY employee_id HAVING count(*) = 1);
 ```
 
+### LeetCode 610 寫一個SQL查詢，判斷三條線段是否能組成一個三角形。
+**連結**: [LeetCode 610](https://leetcode.com/problems/triangle-judgement/)
+#### SQL 解法
+
+```sql
+SELECT x, y, z,
+IF (x+y>z AND x+z>y AND y+z>x, 'Yes', 'No') AS triangle
+FROM Triangle;
+```
+
+### LeetCode 180 寫一個SQL查詢，找出所有至少連續出現三次的數字。
+**連結**: [LeetCode 180](https://leetcode.com/problems/consecutive-numbers/)
+#### SQL 解法
+
+```sql
+SELECT DISTINCT
+   l1.num AS ConsecutiveNums
+FROM Logs l1
+JOIN Logs l2 ON l1.id = l2.id - 1 AND l1.num = l2.num
+JOIN Logs l3 ON l1.id = l3.id - 2 AND l1.num = l3.num;
+```
+```
+自連接: 當需要比較同一表中不同行之間的關係時使用。l1, l2, l3 都是 Logs 表的別名，同一個表有三個不同的"視角"或"角色"
+把同一個表想像成三份copy：
+copy1（l1）：起點視角
+id | num
+---|----
+1  | 1   ← 可能連續序列的起點
+2  | 1   ← 可能連續序列的起點  
+3  | 1   ← 可能連續序列的起點
+4  | 2   ← 可能連續序列的起點
+5  | 1   ← 可能連續序列的起點
+6  | 2   ← 可能連續序列的起點
+7  | 2   ← 可能連續序列的起點
+
+copy2（l2）：下一行視角
+id | num
+---|----
+1  | 1   ← id=1的下一行
+2  | 1   ← id=2的下一行
+3  | 1   ← id=3的下一行
+4  | 2   ← id=4的下一行
+5  | 1   ← id=5的下一行
+6  | 2   ← id=6的下一行
+7  | 2   ← id=7的下一行（沒有下一行，不會被匹配）
+
+copy3（l3）：下兩行視角
+id | num
+---|----
+1  | 1   ← id=1的下兩行
+2  | 1   ← id=2的下兩行
+3  | 1   ← id=3的下兩行
+4  | 2   ← id=4的下兩行
+5  | 1   ← id=5的下兩行
+6  | 2   ← id=6的下兩行
+7  | 2   ← id=7的下兩行（沒有下兩行，不會被匹配）
+
+ON l1.id = l2.id - 1 AND l1.num = l2.num 意思是：l2 的 id 比 l1 大 1（l2是l1的下一行）且 l1 和 l2 的 num 值相同
+ON l1.id = l3.id - 2 AND l1.num = l3.num 意思是：l3 的 id 比 l1 大 2（l3是l1的下兩行）且 l1 和 l3 的 num 值相同
+```
+
+
